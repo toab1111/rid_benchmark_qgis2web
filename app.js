@@ -4,7 +4,7 @@ var ui_search = document.createElement('ui');
 
 var top_left_container = document.getElementById('top-left-container');
 ui_search.id ="searchResults"
-console.log(top_left_container);
+// console.log(top_left_container);
 
 
 var element = document.createElement('div');
@@ -15,12 +15,13 @@ element.appendChild(ui_search);
 top_left_container.appendChild(element);
 const data = json_RIDBENCHMARK_1
 const propertiesArray = data.features.map(feature => feature.properties);
-console.log(propertiesArray);
+// console.log(propertiesArray);
 
 
         // Function to render search results
 function renderResults(results) {
     ui_search.innerHTML = ''; // Clear previous results
+
 
             if (results.length === 0) {
                 ui_search.innerHTML = '<li>No results found</li>';
@@ -31,7 +32,7 @@ function renderResults(results) {
                 const li = document.createElement('li');
                 li.textContent = `${item["ชื่อ"]} `;
                 li.className = "li_point"
-                li.id = item["latitude"]+"_"+item["longitude"]
+                li.id = item["latitude"]+"_"+item["longitude"]+"_"+item["ชื่อ"]
                 ui_search.appendChild(li);
             });
         }
@@ -39,11 +40,6 @@ function renderResults(results) {
 
 
 
-function showComment() {
-console.log("5555555");
-
-
-}
 strait_cbx.addEventListener('input', (event) => {
 
 
@@ -51,8 +47,13 @@ strait_cbx.addEventListener('input', (event) => {
     const filteredData = propertiesArray.filter(item =>
         item['ชื่อ'].replace(/\s+/, "").toLowerCase().includes(searchTerm) // Search by name (case-insensitive)
     );
-    // console.log(filteredData);
-    renderResults(filteredData); // Update the UI
+    // console.log(searchTerm);
+    if (searchTerm != ""){
+        renderResults(filteredData); // Update the UI
+    }
+    else{
+        ui_search.innerHTML = '';
+    }
 
 
 
@@ -68,7 +69,14 @@ ui_search.addEventListener('click', (event) => {
         const myArray = id.split("_");
         lat = myArray[0];
         lon = myArray[1];
-        zoomToPoint(lat,lon);
+        if (lat){
+            zoomToPoint(lat,lon);
+            ui_search.innerHTML = '';
+            strait_cbx.value = myArray[2];
+    
+        }
+
+        
     }
 });
 
