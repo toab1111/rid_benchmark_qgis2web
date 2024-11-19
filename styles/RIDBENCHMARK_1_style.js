@@ -24,7 +24,7 @@ case 'GNSS':
                     break;
 default:
                     return [ new ol.style.Style({
-        image: new ol.style.Circle({radius: 7.999999999999998 + size,
+        image: new ol.style.Circle({radius: 8.0 + size,
             stroke: new ol.style.Stroke({color: 'rgba(35,35,35,1.0)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 0.0}), fill: new ol.style.Fill({color: 'rgba(115,200,147,1.0)'})}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
@@ -40,16 +40,16 @@ var style_RIDBENCHMARK_1 = function(feature, resolution){
     var value = feature.get("ประเภท");
     var labelText = "";
     size = 0;
-    var labelFont = "10px, sans-serif";
-    var labelFill = "#000000";
-    var bufferColor = "";
-    var bufferWidth = 0;
+    var labelFont = "13.0px \'Open Sans\', sans-serif";
+    var labelFill = "#323232";
+    var bufferColor = "#fafafa";
+    var bufferWidth = 1.0;
     var textAlign = "left";
     var offsetX = 8;
     var offsetY = 3;
     var placement = 'point';
-    if ("" !== null) {
-        labelText = String("");
+    if (feature.get("ชื่อ") !== null && resolution > 0 && resolution < 11) {
+        labelText = String(feature.get("ชื่อ"));
     }
     
 var style = categories_RIDBENCHMARK_1(feature, value, size, resolution, labelText,
