@@ -6,8 +6,8 @@ function categories_RIDBENCHMARK_1(feature, value, size, resolution, labelText,
                 var valueStr = (value !== null && value !== undefined) ? value.toString() : 'default';
                 switch(valueStr) {case 'BM':
                     return [ new ol.style.Style({
-        image: new ol.style.RegularShape({radius: 8.0 + size, points: 3,
-            stroke: new ol.style.Stroke({color: 'rgba(35,35,35,1.0)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 0.0}), fill: new ol.style.Fill({color: 'rgba(207,0,3,1.0)'})}),
+        image: new ol.style.RegularShape({radius: 8.000000000000004 + size, points: 3,
+            stroke: new ol.style.Stroke({color: 'rgba(35,35,35,1.0)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 0.0}), fill: new ol.style.Fill({color: 'rgba(224,0,4,1.0)'})}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth)
@@ -15,8 +15,8 @@ function categories_RIDBENCHMARK_1(feature, value, size, resolution, labelText,
                     break;
 case 'GNSS':
                     return [ new ol.style.Style({
-        image: new ol.style.RegularShape({radius: 8.0 + size, points: 4,
-            angle: Math.PI/4, stroke: new ol.style.Stroke({color: 'rgba(35,35,35,1.0)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 0.0}), fill: new ol.style.Fill({color: 'rgba(18,0,219,1.0)'})}),
+        image: new ol.style.RegularShape({radius: 7.999999999999998 + size, points: 4,
+            angle: Math.PI/4, stroke: new ol.style.Stroke({color: 'rgba(35,35,35,1.0)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 0.0}), fill: new ol.style.Fill({color: 'rgba(0,0,231,1.0)'})}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth)
@@ -24,8 +24,8 @@ case 'GNSS':
                     break;
 default:
                     return [ new ol.style.Style({
-        image: new ol.style.Circle({radius: 8.0 + size,
-            stroke: new ol.style.Stroke({color: 'rgba(35,35,35,1.0)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 0.0}), fill: new ol.style.Fill({color: 'rgba(115,200,147,1.0)'})}),
+        image: new ol.style.Circle({radius: 4.0 + size,
+            stroke: new ol.style.Stroke({color: 'rgba(35,35,35,1.0)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 0.0}), fill: new ol.style.Fill({color: 'rgba(152,215,96,1.0)'})}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth)

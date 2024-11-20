@@ -1,15 +1,20 @@
 
+var radio_check = document.createElement('div');
 var strait_cbx = document.createElement('input');
 var ui_search = document.createElement('ui');
+var count = document.createElement('div');
 
 var top_left_container = document.getElementById('top-left-container');
+var radio_control = "name_bm"
 ui_search.id ="searchResults"
 // console.log(top_left_container);
 
-
+radio_check.innerHTML='<input type="radio" id="name_bm" name="radio_check" value="name_bm" checked /><label for="name_bm">ชื่อ</label> <input type="radio" id="changwat" name="radio_check" value="changwat"  /><label for="changwat">จังหวัด</label><input type="radio" id="amphoe" name="radio_check" value="amphoe"  /><label for="amphoe">อำเภอ</label> '
 var element = document.createElement('div');
 element.className = 'ol-control-panel ol-unselectable ol-control search-layer';
 element.innerHTML="<b>ค้นหา</b>"
+element.appendChild(count);
+element.appendChild(radio_check);
 element.appendChild(strait_cbx);
 element.appendChild(ui_search);
 top_left_container.appendChild(element);
@@ -21,42 +26,94 @@ const propertiesArray = data.features.map(feature => feature.properties);
         // Function to render search results
 function renderResults(results) {
     ui_search.innerHTML = ''; // Clear previous results
-
-
-            if (results.length === 0) {
+    count.innerHTML="<b> ค้นพบ "+results.length+" รายการ</b>";
+    if (results.length === 0) {
                 ui_search.innerHTML = '<li>No results found</li>';
                 return;
             }
 
             results.forEach(item => {
                 const li = document.createElement('li');
-                li.textContent = `${item["ชื่อ"]} `;
+                li.textContent = `${item["ชื่อ"]} `+"|"+`${item["จังหวัด"]} `;
                 li.className = "li_point"
                 li.id = item["latitude"]+"_"+item["longitude"]+"_"+item["ชื่อ"]
                 ui_search.appendChild(li);
             });
         }
+        // Function to render search results
+function renderResults_amphoe(results) {
+            ui_search.innerHTML = ''; // Clear previous results
+            count.innerHTML="<b> ค้นพบ "+results.length+" รายการ</b>";
+                    if (results.length === 0) {
+                        ui_search.innerHTML = '<li>No results found</li>';
+                        return;
+                    }
+        
+                    results.forEach(item => {
+                        const li = document.createElement('li');
+                        li.textContent = `${item["ชื่อ"]} `+"|"+`${item["จังหวัด"]} `+"|"+`${item["อำเภอ"]} `;
+                        li.className = "li_point"
+                        li.id = item["latitude"]+"_"+item["longitude"]+"_"+item["ชื่อ"]
+                        ui_search.appendChild(li);
+                    });
+                }
+        
 
-
-
-
+strait_cbx.className = 'strait_cbx';
 strait_cbx.addEventListener('input', (event) => {
+    if (radio_control == "name_bm") {
 
+        const searchTerm = event.target.value.replace(/\s+/, "").toLowerCase(); // Get input value
+        const filteredData = propertiesArray.filter(item =>
+            item['ชื่อ'].replace(/\s+/, "").toLowerCase().includes(searchTerm) // Search by name (case-insensitive)
+        );
+        // console.log(searchTerm);
+        if (searchTerm != ""){
+            renderResults(filteredData); // Update the UI
+        }
+        else{
+            ui_search.innerHTML = '';
+            count.innerHTML="";
 
-    const searchTerm = event.target.value.replace(/\s+/, "").toLowerCase(); // Get input value
-    const filteredData = propertiesArray.filter(item =>
-        item['ชื่อ'].replace(/\s+/, "").toLowerCase().includes(searchTerm) // Search by name (case-insensitive)
-    );
-    // console.log(searchTerm);
-    if (searchTerm != ""){
-        renderResults(filteredData); // Update the UI
+        }
+        
+    }
+    else if (radio_control == "changwat") {
+        
+        const searchTerm = event.target.value.replace(/\s+/, "").toLowerCase(); // Get input value
+        const filteredData = propertiesArray.filter(item =>
+            item['จังหวัด'].replace(/\s+/, "").toLowerCase().includes(searchTerm) // Search by name (case-insensitive)
+        );
+        // console.log(searchTerm);
+        if (searchTerm != ""){
+            renderResults(filteredData); // Update the UI
+        }
+        else{
+            ui_search.innerHTML = '';
+            count.innerHTML="";
+
+        }
     }
     else{
-        ui_search.innerHTML = '';
+
+        const searchTerm = event.target.value; // Get input value
+        if (searchTerm.length > 3) {
+            const filteredData = propertiesArray.filter( item =>
+                item['อำเภอ'].replace(/\s+/, "").toLowerCase().includes(searchTerm) )
+            if (searchTerm != ""){
+                renderResults_amphoe(filteredData); // Update the UI
+            }
+            else{
+                ui_search.innerHTML = '';
+                count.innerHTML="";
+            count.innerHTML="";
+
+            }
+        }
+
+
+
     }
-
-
-
 
 });
 
@@ -91,6 +148,15 @@ function zoomToPoint(lat,lon) {
     });
 }
 
+
+radio_check.addEventListener('change', (event) => {
+    const selectedValue = document.querySelector('input[name="radio_check"]:checked').value;
+    radio_control = selectedValue
+    console.log(selectedValue);
+    
+
+    
+})
 
 /**
  * This is a container element which holds input elements which are controls for the map

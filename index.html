@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="resources/fontawesome-all.min.css">
         <link rel="stylesheet" href="./resources/ol-layerswitcher.css">
         <link rel="stylesheet" href="./resources/qgis2web.css">
+        <link rel="stylesheet" href="style.css">
         <style>
         html, body {
             background-color: #ffffff;
@@ -32,12 +33,6 @@
             background-color: rgba(255,255,255,.4) !important;
             padding: 2px !important;
         } 
-        .search-layer {
-            background-color: rgba(248, 248, 248, 0.7);
-            position: relative;
-            overflow: auto;
-            max-height: 250px;
-        }
         </style>
 
         <style>
@@ -47,26 +42,16 @@
             padding: 0;
             margin: 0;
         }
-        li {
-            padding: 5px;
-            
-        }
-        .li_point:hover{
-            background-color: yellow;
-        }
         </style>
-
         <title>RID BENCHMARK MAP</title>
     </head>
     <body>
-
         <div id="map">
             <div id="popup" class="ol-popup">
                 <a href="#" id="popup-closer" class="ol-popup-closer"></a>
                 <div id="popup-content"></div>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/handsontable@12.0.1/dist/handsontable.full.min.js"></script>
         <script src="resources/qgis2web_expressions.js"></script>
         <script src="./resources/functions.js"></script>
         <script src="./resources/ol.js"></script>

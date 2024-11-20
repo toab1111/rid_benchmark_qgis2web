@@ -9,7 +9,7 @@ var map = new ol.Map({
 });
 
 //initial view - epsg:3857 coordinates if not "Match project CRS"
-map.getView().fit([11192116.585808, 1691924.142753, 11202417.945685, 1697894.394936], map.getSize());
+map.getView().fit([11188075.112309, 1652163.911830, 11189362.782293, 1652908.922454], map.getSize());
 
 ////small screen definition
     var hasTouchScreen = map.getViewport().classList.contains('ol-touch');
@@ -454,7 +454,7 @@ var Abstract = new ol.control.Control({
 
         var linkElement = document.createElement('a');
 
-        if (65 > 240) {
+        if (160 > 240) {
             linkElement.setAttribute("onmouseenter", "showAbstract()");
             linkElement.setAttribute("onmouseleave", "hideAbstract()");
             linkElement.innerHTML = 'i';
@@ -468,13 +468,13 @@ var Abstract = new ol.control.Control({
             window.showAbstract = function() {
                 linkElement.classList.remove("project-abstract");
                 linkElement.classList.add("project-abstract-uncollapsed");
-                linkElement.innerHTML = 'This is a demo. Created by QGIS2WEP.<br />Last updated on 18/11/2024.<br />';
+                linkElement.innerHTML = 'เว็บไซต์ตัวอย่าง.Last updated on 18/11/2024.<br />วงศธร เนตรพุกกณะ วิศวกรสำรวจปฏิบัติการ<br />ส่วนวิศวกรรม สำนักสำรวจด้านวิศวกรรมและธรณีวิทยา <br />กรมชลประทาน โทร. 02-2415135';
             }
 
             hideAbstract();
         } else {
             linkElement.classList.add("project-abstract-uncollapsed");
-            linkElement.innerHTML = 'This is a demo. Created by QGIS2WEP.<br />Last updated on 18/11/2024.<br />';
+            linkElement.innerHTML = 'เว็บไซต์ตัวอย่าง.Last updated on 18/11/2024.<br />วงศธร เนตรพุกกณะ วิศวกรสำรวจปฏิบัติการ<br />ส่วนวิศวกรรม สำนักสำรวจด้านวิศวกรรมและธรณีวิทยา <br />กรมชลประทาน โทร. 02-2415135';
         }
 
         titleElement.appendChild(linkElement);
