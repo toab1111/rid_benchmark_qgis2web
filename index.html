@@ -57,6 +57,19 @@
         <script src="./resources/ol.js"></script>
         <script src="./resources/ol-layerswitcher.js"></script>
         <script src="layers/RIDBENCHMARK_1.js"></script>
+        <script>
+            json_RIDBENCHMARK_1.features.forEach(feature => {
+            if (feature.properties) {
+                if (feature.properties["ชื่อ"]) {
+                feature.properties["ชื่อ"] = atob(feature.properties["ชื่อ"]);
+                }
+                if (feature.properties.Description) {
+                feature.properties.Description = atob(feature.properties.Description);
+                }
+            }
+            });
+
+        </script>
         <script src="styles/RIDBENCHMARK_1_style.js"></script>
         <script src="./layers/layers.js" type="text/javascript"></script> 
         <script src="./resources/Autolinker.min.js"></script>

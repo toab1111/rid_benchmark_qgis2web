@@ -174,3 +174,4 @@ radio_check.addEventListener('change', (event) => {
 //     positioning: 'top-left-container',
 // });
 // map.addControl(controlPanel);
+
