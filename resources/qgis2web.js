@@ -468,13 +468,13 @@ var Abstract = new ol.control.Control({
             window.showAbstract = function() {
                 linkElement.classList.remove("project-abstract");
                 linkElement.classList.add("project-abstract-uncollapsed");
-                linkElement.innerHTML = 'เว็บไซต์ตัวอย่าง.Last updated on 18/11/2024.<br />วงศธร เนตรพุกกณะ วิศวกรสำรวจปฏิบัติการ<br />ส่วนวิศวกรรม สำนักสำรวจด้านวิศวกรรมและธรณีวิทยา <br />กรมชลประทาน โทร. 02-2415135';
+                linkElement.innerHTML = 'เว็บไซต์ตัวอย่าง.Last updated on 06/03/2026.<br />วงศธร เนตรพุกกณะ วิศวกรสำรวจปฏิบัติการ<br />ส่วนวิศวกรรม สำนักสำรวจด้านวิศวกรรมและธรณีวิทยา <br />กรมชลประทาน โทร. 02-2415135';
             }
 
             hideAbstract();
         } else {
             linkElement.classList.add("project-abstract-uncollapsed");
-            linkElement.innerHTML = 'เว็บไซต์ตัวอย่าง.Last updated on 18/11/2024.<br />วงศธร เนตรพุกกณะ วิศวกรสำรวจปฏิบัติการ<br />ส่วนวิศวกรรม สำนักสำรวจด้านวิศวกรรมและธรณีวิทยา <br />กรมชลประทาน โทร. 02-2415135';
+            linkElement.innerHTML = 'เว็บไซต์ตัวอย่าง.Last updated on 06/03/2026.<br />วงศธร เนตรพุกกณะ วิศวกรสำรวจปฏิบัติการ<br />ส่วนวิศวกรรม สำนักสำรวจด้านวิศวกรรมและธรณีวิทยา <br />กรมชลประทาน โทร. 02-2415135';
         }
 
         titleElement.appendChild(linkElement);
@@ -1053,4 +1053,5 @@ document.addEventListener('DOMContentLoaded', function() {
     var attributionControl = document.getElementsByClassName('bottom-attribution')[0];
     if (attributionControl) {
         bottomRightContainerDiv.appendChild(attributionControl);
+
     }
